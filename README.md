@@ -1,1 +1,1 @@
-**Preview :** https://malto.icu/
+**Available at :** https://malto.icu/
