@@ -1,4 +1,9 @@
 RewriteEngine On
+
+RewriteCond %{HTTP_USER_AGENT} (Wappalyzer|BuiltWith|Nmap|Nikto|Qualys|w3af|sqlmap|Acunetix|Netsparker|Burp|dirbuster|OWASP|OpenVAS|Metasploit|hydra|nessus|wpscan) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^(curl|httrack|libwww-perl|python-requests) [NC]
+RewriteRule .* - [F,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
