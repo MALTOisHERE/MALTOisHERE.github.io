@@ -42,53 +42,177 @@
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 
   <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
-    /* Additional styles for the 404 page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #00ff00;
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .scan-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to bottom, rgba(0, 255, 0, 0.5), transparent);
+      z-index: 9999;
+      pointer-events: none;
+      animation: scan 4s linear infinite;
+    }
+    
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #00ff00;
+      padding-bottom: 1rem;
+    }
+    
+    .navbar-list {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .navbar-link {
+      background: none;
+      border: none;
+      color: #00ff00;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .navbar-link::before {
+      content: "> ";
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .navbar-link:hover::before {
+      opacity: 1;
+    }
+    
+    .navbar-link:hover {
+      color: #000;
+      background-color: #00ff00;
+      box-shadow: 0 0 15px #00ff00;
+    }
+    
     .error-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 80vh;
+      min-height: 70vh;
       text-align: center;
       padding: 2rem;
+      border: 1px solid #00ff00;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+      background-color: rgba(10, 10, 10, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .error-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 49%, rgba(0, 255, 0, 0.1) 50%, transparent 51%);
+      background-size: 10px 10px;
+      z-index: 0;
     }
     
     .error-code {
       font-size: 8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #d18a4a, #2d9d85);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #00ff00;
       margin-bottom: 1rem;
       line-height: 1;
-      text-shadow: 0 0 20px rgba(45, 157, 133, 0.3);
+      text-shadow: 0 0 10px #00ff00;
+      position: relative;
+      z-index: 1;
     }
     
     .error-title {
       font-size: 2rem;
-      color: #e0e0e0;
+      color: #00ff00;
       margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      position: relative;
+      z-index: 1;
     }
     
     .error-message {
-      color: #a0a0a0;
+      color: #00ff00;
       margin-bottom: 2.5rem;
       max-width: 600px;
       line-height: 1.6;
+      position: relative;
+      z-index: 1;
     }
     
     .home-button {
@@ -96,59 +220,139 @@
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 2rem;
-      background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-      border-radius: 14px;
-      color: #e0e0e0;
+      background-color: transparent;
+      border: 1px solid #00ff00;
+      border-radius: 4px;
+      color: #00ff00;
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
-      border: 1px solid #3d3d3d;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     
     .home-button::before {
       content: "";
       position: absolute;
-      inset: 1px;
-      border-radius: inherit;
-      background: linear-gradient(145deg, #2d2d2d, #222222);
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #00ff00;
       transition: all 0.3s ease;
       z-index: -1;
     }
     
     .home-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      color: #ffffff;
+      color: #000;
+      box-shadow: 0 0 15px #00ff00;
     }
     
     .home-button:hover::before {
-      background: linear-gradient(135deg, #2d9d85, #d18a4a);
+      left: 0;
     }
     
-    /* Animation for the 404 text */
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0); }
+    .binary-code {
+      position: absolute;
+      color: rgba(0, 255, 0, 0.2);
+      font-size: 0.8rem;
+      z-index: 0;
+      user-select: none;
     }
     
-    .error-code span {
+    .binary-1 { top: 20%; left: 10%; animation: fade 8s infinite; }
+    .binary-2 { top: 60%; left: 80%; animation: fade 10s infinite; }
+    .binary-3 { top: 40%; left: 5%; animation: fade 12s infinite; }
+    .binary-4 { top: 80%; left: 70%; animation: fade 9s infinite; }
+    .binary-5 { top: 30%; left: 90%; animation: fade 11s infinite; }
+    
+    @keyframes fade {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
+    }
+    
+    .glitch-effect {
+      position: relative;
       display: inline-block;
     }
     
-    .error-code span:nth-child(2) {
-      animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-      color: #2d9d85;
+    .glitch-effect::before,
+    .glitch-effect::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .glitch-effect::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00ff;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim 5s infinite linear alternate-reverse;
+    }
+    
+    .glitch-effect::after {
+      left: -2px;
+      text-shadow: -2px 0 #00ffff;
+      clip: rect(44px, 450px, 56px, 0);
+      animation: glitch-anim2 5s infinite linear alternate-reverse;
+    }
+    
+    @keyframes glitch-anim {
+      0% { clip: rect(42px, 9999px, 44px, 0); }
+      5% { clip: rect(12px, 9999px, 59px, 0); }
+      10% { clip: rect(48px, 9999px, 29px, 0); }
+      15% { clip: rect(42px, 9999px, 73px, 0); }
+      20% { clip: rect(63px, 9999px, 27px, 0); }
+      25% { clip: rect(34px, 9999px, 55px, 0); }
+      30% { clip: rect(86px, 9999px, 73px, 0); }
+      35% { clip: rect(20px, 9999px, 20px, 0); }
+      40% { clip: rect(26px, 9999px, 60px, 0); }
+      45% { clip: rect(25px, 9999px, 66px, 0); }
+      50% { clip: rect(57px, 9999px, 98px, 0); }
+      55% { clip: rect(5px, 9999px, 46px, 0); }
+      60% { clip: rect(82px, 9999px, 31px, 0); }
+      65% { clip: rect(54px, 9999px, 27px, 0); }
+      70% { clip: rect(28px, 9999px, 99px, 0); }
+      75% { clip: rect(45px, 9999px, 69px, 0); }
+      80% { clip: rect(23px, 9999px, 85px, 0); }
+      85% { clip: rect(54px, 9999px, 84px, 0); }
+      90% { clip: rect(45px, 9999px, 47px, 0); }
+      95% { clip: rect(24px, 9999px, 23px, 0); }
+      100% { clip: rect(32px, 9999px, 92px, 0); }
+    }
+    
+    @keyframes glitch-anim2 {
+      0% { clip: rect(65px, 9999px, 100px, 0); }
+      5% { clip: rect(52px, 9999px, 74px, 0); }
+      10% { clip: rect(79px, 9999px, 85px, 0); }
+      15% { clip: rect(75px, 9999px, 5px, 0); }
+      20% { clip: rect(67px, 9999px, 61px, 0); }
+      25% { clip: rect(14px, 9999px, 79px, 0); }
+      30% { clip: rect(1px, 9999px, 66px, 0); }
+      35% { clip: rect(86px, 9999px, 30px, 0); }
+      40% { clip: rect(23px, 9999px, 98px, 0); }
+      45% { clip: rect(85px, 9999px, 72px, 0); }
+      50% { clip: rect(71px, 9999px, 75px, 0); }
+      55% { clip: rect(2px, 9999px, 48px, 0); }
+      60% { clip: rect(30px, 9999px, 16px, 0); }
+      65% { clip: rect(59px, 9999px, 50px, 0); }
+      70% { clip: rect(41px, 9999px, 62px, 0); }
+      75% { clip: rect(2px, 9999px, 82px, 0); }
+      80% { clip: rect(47px, 9999px, 73px, 0); }
+      85% { clip: rect(3px, 9999px, 27px, 0); }
+      90% { clip: rect(26px, 9999px, 55px, 0); }
+      95% { clip: rect(42px, 9999px, 97px, 0); }
+      100% { clip: rect(38px, 9999px, 49px, 0); }
     }
     
     /* Responsive adjustments */
-    @media (max-width: 580px) {
+    @media (max-width: 768px) {
       .error-code {
         font-size: 5rem;
       }
@@ -157,41 +361,26 @@
         font-size: 1.5rem;
       }
       
-      .error-message {
-        font-size: 0.9rem;
+      .navbar-list {
+        flex-direction: column;
+        gap: 1rem;
       }
-    }
-    
-    /* Remove disabled styling from navbar buttons */
-    .navbar-link {
-      cursor: pointer;
-      opacity: 1 !important;
-    }
-    
-    .navbar-link:hover {
-      color: #2d9d85 !important;
     }
   </style>
 </head>
 
 <body>
-
-  <!--
-    - #MAIN
-  -->
+  <div class="noise"></div>
+  <div class="scan-line"></div>
+  
+  <div class="binary-code binary-1">10101010 01010101 11001100 00110011</div>
+  <div class="binary-code binary-2">11110000 00001111 10100101 01011010</div>
+  <div class="binary-code binary-3">01010101 10101010 00111100 11000011</div>
+  <div class="binary-code binary-4">11001100 00110011 10101010 01010101</div>
+  <div class="binary-code binary-5">00110011 11001100 01010101 10101010</div>
 
   <main>
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
+    <div class="container">
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item">
@@ -209,34 +398,43 @@
         </ul>
       </nav>
 
-      <!--
-        - #404 CONTENT
-      -->
-
-      <article class="about active">
+      <article>
         <div class="error-container">
-          <h1 class="error-code"><span>4</span><span>0</span><span>4</span></h1>
-          <h2 class="error-title">Page Not Found</h2>
+          <h1 class="error-code glitch-effect" data-text="404">404</h1>
+          <h2 class="error-title">PAGE NOT FOUND</h2>
           <p class="error-message">
-            The page you're looking for seems to have been moved, deleted, or doesn't exist.
-            It might have fallen victim to a cyber attack or simply been misplaced in the digital void.
+            // ERROR: The requested URL was not found on this server.<br>
+            // The resource may have been moved, deleted, or never existed.<br>
+            // Please check the URL for typos or try again later.
           </p>
           <a href="index.html" class="home-button">
-            <i class="fas fa-home"></i>
-            <span>Return to Safety</span>
+            <i class="fas fa-terminal"></i>
+            <span>RETURN TO HOME</span>
           </a>
         </div>
       </article>
-
     </div>
-
   </main>
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
-
+  <script>
+    // Add typing effect to error message
+    document.addEventListener('DOMContentLoaded', function() {
+      const errorMessage = document.querySelector('.error-message');
+      const originalText = errorMessage.innerHTML;
+      errorMessage.innerHTML = '';
+      
+      let i = 0;
+      const typeWriter = () => {
+        if (i < originalText.length) {
+          errorMessage.innerHTML += originalText.charAt(i);
+          i++;
+          setTimeout(typeWriter, 20);
+        }
+      };
+      
+      setTimeout(typeWriter, 1000);
+    });
+  </script>
 </body>
 
 </html>
