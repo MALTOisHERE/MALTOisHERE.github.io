@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <noscript>
+    <style>
+      /* Hide everything when JS is disabled */
+      body > * { display: none !important; }
+      
+      /* Show noscript message */
+      body::before {
+        content: "This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.";
+        display: block;
+        padding: 2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        color: white;
+        background-color: #222;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+      }
+    </style>
+  </noscript>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Mohamed AIT OUAARAB</title>
+  
+  <meta name="description" content="The page you're looking for doesn't exist. Return to Mohamed AIT OUAARAB's cybersecurity portfolio.">
+  <meta name="keywords" content="404, page not found, cybersecurity, portfolio, Mohamed AIT OUAARAB">
+  <meta name="author" content="Mohamed AIT OUAARAB">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Additional styles for the 404 page */
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--raw-sienna), var(--viridian-green));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+    
+    .error-title {
+      font-size: 2rem;
+      color: var(--white-2);
+      margin-bottom: 1.5rem;
+    }
+    
+    .error-message {
+      color: var(--light-gray-70);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+    
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--bg-gradient-onyx);
+      border-radius: 14px;
+      color: var(--white-2);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-1);
+      box-shadow: var(--shadow-2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .home-button::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: var(--bg-gradient-jet);
+      transition: var(--transition-1);
+      z-index: -1;
+    }
+    
+    .home-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-4);
+    }
+    
+    .home-button:hover::before {
+      background: var(--bg-gradient-green);
+    }
+    
+    /* Animation for the 404 text */
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+    
+    .error-code span {
+      display: inline-block;
+    }
+    
+    .error-code span:nth-child(2) {
+      animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+      color: var(--viridian-green);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 580px) {
+      .error-code {
+        font-size: 5rem;
+      }
+      
+      .error-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link" onclick="window.location.href='index.html'">About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" onclick="window.location.href='index.html#resume'">Resume</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" onclick="window.open('https://blog.malto.icu', '_blank');">Blog</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" onclick="window.location.href='index.html#contact'">Contact</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!--
+        - #404 CONTENT
+      -->
+
+      <article class="about active">
+        <div class="error-container">
+          <h1 class="error-code"><span>4</span><span>0</span><span>4</span></h1>
+          <h2 class="error-title">Page Not Found</h2>
+          <p class="error-message">
+            The page you're looking for seems to have been moved, deleted, or doesn't exist.
+            It might have fallen victim to a cyber attack or simply been misplaced in the digital void.
+          </p>
+          <a href="index.html" class="home-button">
+            <i class="fas fa-home"></i>
+            <span>Return to Safety</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
