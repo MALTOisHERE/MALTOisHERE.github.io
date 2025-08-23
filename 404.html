@@ -69,24 +69,26 @@
     .error-code {
       font-size: 8rem;
       font-weight: 700;
-      background: linear-gradient(135deg, var(--raw-sienna), var(--viridian-green));
+      background: linear-gradient(135deg, #d18a4a, #2d9d85);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 1rem;
       line-height: 1;
+      text-shadow: 0 0 20px rgba(45, 157, 133, 0.3);
     }
     
     .error-title {
       font-size: 2rem;
-      color: var(--white-2);
+      color: #e0e0e0;
       margin-bottom: 1.5rem;
     }
     
     .error-message {
-      color: var(--light-gray-70);
+      color: #a0a0a0;
       margin-bottom: 2.5rem;
       max-width: 600px;
+      line-height: 1.6;
     }
     
     .home-button {
@@ -94,15 +96,16 @@
       align-items: center;
       gap: 0.5rem;
       padding: 1rem 2rem;
-      background: var(--bg-gradient-onyx);
+      background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
       border-radius: 14px;
-      color: var(--white-2);
+      color: #e0e0e0;
       text-decoration: none;
       font-weight: 500;
-      transition: var(--transition-1);
-      box-shadow: var(--shadow-2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       overflow: hidden;
+      border: 1px solid #3d3d3d;
     }
     
     .home-button::before {
@@ -110,18 +113,19 @@
       position: absolute;
       inset: 1px;
       border-radius: inherit;
-      background: var(--bg-gradient-jet);
-      transition: var(--transition-1);
+      background: linear-gradient(145deg, #2d2d2d, #222222);
+      transition: all 0.3s ease;
       z-index: -1;
     }
     
     .home-button:hover {
       transform: translateY(-3px);
-      box-shadow: var(--shadow-4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
     }
     
     .home-button:hover::before {
-      background: var(--bg-gradient-green);
+      background: linear-gradient(135deg, #2d9d85, #d18a4a);
     }
     
     /* Animation for the 404 text */
@@ -140,7 +144,7 @@
     
     .error-code span:nth-child(2) {
       animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-      color: var(--viridian-green);
+      color: #2d9d85;
     }
     
     /* Responsive adjustments */
@@ -152,6 +156,20 @@
       .error-title {
         font-size: 1.5rem;
       }
+      
+      .error-message {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Remove disabled styling from navbar buttons */
+    .navbar-link {
+      cursor: pointer;
+      opacity: 1 !important;
+    }
+    
+    .navbar-link:hover {
+      color: #2d9d85 !important;
     }
   </style>
 </head>
@@ -177,16 +195,16 @@
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item">
-            <button class="navbar-link" onclick="window.location.href='index.html'" disabled>About</button>
+            <button class="navbar-link" onclick="window.location.href='index.html'">About</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" onclick="window.location.href='index.html'" disabled>Resume</button>
+            <button class="navbar-link" onclick="window.location.href='index.html'">Resume</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" onclick="window.open('https://blog.malto.icu', '_blank');" disabled>Blog</button>
+            <button class="navbar-link" onclick="window.open('https://blog.malto.icu', '_blank');">Blog</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" onclick="window.location.href='index.html'" disabled>Contact</button>
+            <button class="navbar-link" onclick="window.location.href='index.html'">Contact</button>
           </li>
         </ul>
       </nav>
