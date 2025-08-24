@@ -8,12 +8,14 @@
         /* Hide everything when JS is disabled */
         body > * { display: none !important; }
         
-        /* Show noscript message */
+        /* Show centered noscript message */
         body::before {
           content: "This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.";
-          display: block;
-          padding: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           text-align: center;
+          padding: 2rem;
           font-size: 1.5rem;
           color: white;
           background-color: #222;
@@ -23,6 +25,7 @@
           right: 0;
           bottom: 0;
           z-index: 9999;
+          line-height: 1.6;
         }
       </style>
     </noscript>

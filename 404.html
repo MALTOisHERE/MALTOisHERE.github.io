@@ -2,34 +2,38 @@
 <html lang="en">
 
 <head>
-  <noscript>
-    <style>
-      /* Hide everything when JS is disabled */
-      body > * { display: none !important; }
-      
-      /* Show noscript message */
-      body::before {
-        content: "This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.";
-        display: block;
-        padding: 2rem;
-        text-align: center;
-        font-size: 1.5rem;
-        color: white;
-        background-color: #222;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9999;
-      }
-    </style>
-  </noscript>
+  
+    <noscript>
+      <style>
+        /* Hide everything when JS is disabled */
+        body > * { display: none !important; }
+        
+        /* Show centered noscript message */
+        body::before {
+          content: "This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.";
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 2rem;
+          font-size: 1.5rem;
+          color: white;
+          background-color: #222;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 9999;
+          line-height: 1.6;
+        }
+      </style>
+    </noscript>
   
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found - Mohamed AIT OUAARAB</title>
+  <title>Page Not Found :(</title>
   
   <meta name="description" content="The page you're looking for doesn't exist. Return to Mohamed AIT OUAARAB's cybersecurity portfolio.">
   <meta name="keywords" content="404, page not found, cybersecurity, portfolio, Mohamed AIT OUAARAB">
