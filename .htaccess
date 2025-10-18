@@ -1,5 +1,20 @@
 RewriteEngine On
 
+Options -Indexes
+
+ServerSignature Off
+
+RewriteRule \.(htaccess|htpasswd|ini|env|log|sh|bak|swp|git|svn)$ - [F,L,NC]
+RewriteRule ^(wp-config\.php|composer\.json|package\.json|README\.md)$ - [F,L,NC]
+
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK) [NC]
+RewriteRule .* - [F,L]
+
+RewriteCond %{QUERY_STRING} (eval\(|base64_decode|UNION\s+SELECT|javascript:|script\>|<\s*script) [NC]
+RewriteRule .* - [F,L]
+
+RewriteRule ^(xmlrpc\.php|wp-login\.php) - [F,L,NC]
+
 RewriteCond %{HTTP_USER_AGENT} (Wappalyzer|BuiltWith|Nmap|Nikto|Qualys|w3af|sqlmap|Acunetix|Netsparker|Burp|dirbuster|OWASP|OpenVAS|Metasploit|hydra|nessus|wpscan) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^(curl|httrack|libwww-perl|python-requests) [NC]
 RewriteRule .* - [F,L]
