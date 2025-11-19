@@ -12,6 +12,7 @@ This is a personal portfolio website for Mohamed AIT OUAARAB, a cybersecurity en
 
 ## File Structure
 
+```
 .
 ├── assets
 │   ├── css
@@ -28,6 +29,7 @@ This is a personal portfolio website for Mohamed AIT OUAARAB, a cybersecurity en
 ├── README.md
 ├── index.html
 └── sitemap.xml
+```
 
 ## Setup
 
