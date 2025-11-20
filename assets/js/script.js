@@ -1,8 +1,9 @@
 'use strict';
 
-
-
-// element toggle function
+/**
+ * Toggles the 'active' class on a given element.
+ * @param {Element} elem - The element to toggle the class on.
+ */
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 
@@ -11,7 +12,9 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
-// sidebar toggle functionality for mobile
+/**
+ * Toggles the sidebar on mobile devices.
+ */
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
 
@@ -27,7 +30,9 @@ const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
 
-// modal toggle function
+/**
+ * Toggles the 'active' class on the modal container and overlay, making the modal visible or hidden.
+ */
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
@@ -35,7 +40,9 @@ const testimonialsModalFunc = function () {
 
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
-
+  /**
+   * Displays the testimonial modal with the data from the clicked item.
+   */
   testimonialsItem[i].addEventListener("click", function () {
 
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
@@ -61,10 +68,16 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
+/**
+ * Toggles the 'active' class on the custom select element.
+ */
 select.addEventListener("click", function () { elementToggleFunc(this); });
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
+  /**
+   * Updates the select value and filters the portfolio items when a select item is clicked.
+   */
   selectItems[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
@@ -78,6 +91,10 @@ for (let i = 0; i < selectItems.length; i++) {
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
+/**
+ * Filters the portfolio items based on the selected category.
+ * @param {string} selectedValue - The selected category to filter by.
+ */
 const filterFunc = function (selectedValue) {
 
   for (let i = 0; i < filterItems.length; i++) {
@@ -98,7 +115,9 @@ const filterFunc = function (selectedValue) {
 let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
-
+  /**
+   * Updates the select value and filters the portfolio items when a filter button is clicked.
+   */
   filterBtn[i].addEventListener("click", function () {
 
     let selectedValue = this.innerText.toLowerCase();
@@ -122,6 +141,9 @@ const formBtn = document.querySelector("[data-form-btn]");
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
+  /**
+   * Enables the form button if the form is valid, otherwise disables it.
+   */
   formInputs[i].addEventListener("input", function () {
 
     // check form validation
@@ -142,6 +164,9 @@ const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
+  /**
+   * Shows the clicked page and hides the others.
+   */
   navigationLinks[i].addEventListener("click", function () {
 
     for (let i = 0; i < pages.length; i++) {
