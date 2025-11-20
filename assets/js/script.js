@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
   links.forEach(link => {
     if (link.textContent.trim() === 'Blog') {
       link.addEventListener('click', function (e) {
-        window.open('https://blog.malto.icu', '_blank');
+        window.location.href = 'https://blog.malto.icu';
         e.stopImmediatePropagation();
       });
     }
