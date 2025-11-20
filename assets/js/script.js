@@ -184,11 +184,13 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.querySelector('[data-nav-link="blog"]');
-  if (!btn) return;
-  btn.addEventListener('click', function (e) {
-    // open in new tab and stop propagation (same behavior as your inline handler)
-    window.open('https://blog.malto.icu', '_blank');
-    e.stopImmediatePropagation();
+  const links = document.querySelectorAll('[data-nav-link]');
+  links.forEach(link => {
+    if (link.textContent.trim() === 'Blog') {
+      link.addEventListener('click', function (e) {
+        window.open('https://blog.malto.icu', '_blank');
+        e.stopImmediatePropagation();
+      });
+    }
   });
 });
