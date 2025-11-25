@@ -1154,6 +1154,12 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
+.g-recaptcha {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
