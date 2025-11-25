@@ -1154,10 +1154,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
-.g-recaptcha {
-  margin: 15px 0;
+.recaptcha-wrapper {
   display: flex;
   justify-content: center;
+  margin: 25px 0;
 }
 
 /*-----------------------------------*\
