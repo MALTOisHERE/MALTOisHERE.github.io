@@ -5,16 +5,23 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
   const messageElement = statusElement.querySelector('.status-message');
   const closeButton = statusElement.querySelector('.form-status-close');
 
-  closeButton.onclick = () => {
-    statusElement.classList.remove('active');
+  const hideStatus = () => {
+    statusElement.classList.remove('active', 'success', 'error');
+  };
+
+  closeButton.onclick = hideStatus;
+
+  const showStatus = (message, isError = false) => {
+    messageElement.textContent = message;
+    statusElement.classList.add('active');
+    statusElement.classList.toggle('success', !isError);
+    statusElement.classList.toggle('error', isError);
+    setTimeout(hideStatus, 5000);
   };
 
   const captchaResponse = grecaptcha.getResponse();
   if (!captchaResponse) {
-    messageElement.textContent = 'Please complete the CAPTCHA.';
-    statusElement.style.color = 'var(--bittersweet-shimmer)';
-    statusElement.classList.add('active');
-    setTimeout(() => statusElement.classList.remove('active'), 5000);
+    showStatus('Please complete the CAPTCHA.', true);
     return;
   }
 
@@ -29,25 +36,13 @@ document.getElementById('myForm').addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      messageElement.textContent = 'Message sent successfully!';
-      statusElement.style.color = '#61cf5a';
-      statusElement.classList.add('active');
+      showStatus('Message sent successfully!');
       form.reset();
       grecaptcha.reset();
-
-      setTimeout(() => {
-        statusElement.classList.remove('active');
-      }, 5000);
     } else {
       throw new Error('Failed to send message');
     }
   } catch (error) {
-    messageElement.textContent = `Error: ${error.message}`;
-    statusElement.style.color = 'var(--bittersweet-shimmer)';
-    statusElement.classList.add('active');
-
-    setTimeout(() => {
-      statusElement.classList.remove('active');
-    }, 5000);
+    showStatus(`Error: ${error.message}`, true);
   }
 });
