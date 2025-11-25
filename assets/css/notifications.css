@@ -1,0 +1,76 @@
+/*-----------------------------------*\
+  #notifications.css
+\*-----------------------------------*/
+
+.form-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 14px;
+  background: var(--bg-gradient-jet);
+  border: 1px solid var(--jet);
+  box-shadow: var(--shadow-2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 300px;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.form-status.active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-status.success {
+  color: #61cf5a; /* Green for success */
+}
+
+.form-status.error {
+  color: var(--bittersweet-shimmer); /* Red for error */
+}
+
+.form-status::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--bg-gradient-jet);
+  z-index: -1;
+}
+
+.form-status-close {
+  background: none;
+  color: var(--light-gray-70);
+  padding: 5px;
+  border-radius: 8px;
+  transition: var(--transition-1);
+  cursor: pointer;
+}
+
+.form-status-close:hover {
+  color: var(--white-2);
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+@media (max-width: 580px) {
+  .form-status {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+    padding: 10px 15px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .form-status-close {
+    padding: 3px;
+  }
+}
