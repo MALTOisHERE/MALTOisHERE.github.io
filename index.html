@@ -4,28 +4,7 @@
   <head>
 
     <noscript>
-      <style>
-        body > * { display: none !important; }
-        
-        body::before {
-          content: "This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.";
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 2rem;
-          font-size: 1.5rem;
-          color: white;
-          background-color: #222;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 9999;
-          line-height: 1.6;
-        }
-      </style>
+      <meta http-equiv="refresh" content="0;url=noscript.html">
     </noscript>
 
     <meta charset="UTF-8">
@@ -68,6 +47,7 @@
       type="image/x-icon">
 
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/notifications.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1289,78 +1269,6 @@
             <section class="contact-form">
 
               <h3 class="h3 form-title">Contact Form</h3>
-              <style>
-            .form-status {
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              padding: 15px 20px;
-              border-radius: 14px;
-              background: var(--bg-gradient-jet);
-              border: 1px solid var(--jet);
-              box-shadow: var(--shadow-2);
-              color: var(--white-2);
-              display: none;
-              align-items: center;
-              gap: 15px;
-              max-width: 300px;
-              z-index: 9999;
-              transform: translateY(-100%);
-              opacity: 0;
-              transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-            }
-
-            .form-status.active {
-              display: flex;
-              transform: translateY(0);
-              opacity: 1;
-            }
-
-            .form-status::before {
-              content: "";
-              position: absolute;
-              inset: 1px;
-              border-radius: inherit;
-              background: var(--bg-gradient-jet);
-              z-index: -1;
-            }
-
-            .form-status-close {
-              background: none;
-              color: var(--light-gray-70);
-              padding: 5px;
-              border-radius: 8px;
-              transition: var(--transition-1);
-              cursor: pointer;
-            }
-
-            .form-status-close:hover {
-              color: var(--white-2);
-              background: hsla(0, 0%, 100%, 0.1);
-            }
-
-            @media (max-width: 580px) {
-              .form-status {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                max-width: calc(100% - 20px);
-                padding: 10px 15px;
-                justify-content: space-between;
-                align-items: center;
-              }
-
-              .form-status-close {
-                padding: 3px;
-              }
-            }
-
-            .g-recaptcha {
-              margin: 15px 0;
-              display: flex;
-              justify-content: center;
-            }
-          </style>
 
               <form action="https://formspree.io/f/myzegdyg" method="POST"
                 class="form" data-form id="myForm">
