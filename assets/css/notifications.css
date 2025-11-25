@@ -1,0 +1,119 @@
+/*-----------------------------------*\
+  #notifications.css
+\*-----------------------------------*/
+
+:root {
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --notification-bg: hsl(240, 2%, 12%);
+  --notification-border: hsl(0, 0%, 22%);
+  --notification-shadow: -4px 8px 24px hsla(0, 0%, 0%, 0.4);
+  --notification-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.form-status {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--notification-bg);
+  border: 1px solid var(--notification-border);
+  box-shadow: var(--notification-shadow);
+  transform: translateX(calc(100% + 40px));
+  transition: var(--notification-transition);
+  z-index: 10000;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.form-status.active {
+  transform: translateX(0);
+}
+
+.form-status .notification-content {
+  display: flex;
+  align-items: center;
+}
+
+.form-status .icon {
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+.form-status.success .icon {
+  color: var(--success-color);
+}
+
+.form-status.error .icon {
+  color: var(--error-color);
+}
+
+.form-status .message {
+  font-size: 16px;
+  color: var(--light-gray);
+}
+
+.form-status .form-status-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--light-gray-70);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: var(--transition-1);
+}
+
+.form-status .form-status-close:hover {
+  color: var(--white-2);
+}
+
+.form-status .progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--notification-bg);
+}
+
+.form-status .progress-bar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.form-status.success .progress-bar::before {
+  background: var(--success-color);
+}
+
+.form-status.error .progress-bar::before {
+  background: var(--error-color);
+}
+
+.form-status.active .progress-bar::before {
+  animation: progressBar 5s linear forwards;
+}
+
+@keyframes progressBar {
+  100% {
+    width: 0%;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-status {
+    width: calc(100% - 40px);
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    padding: 15px;
+  }
+}
