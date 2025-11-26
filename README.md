@@ -4,10 +4,10 @@ This is a personal portfolio website for Mohamed AIT OUAARAB, a cybersecurity en
 
 ## Features
 
-- **About Me**: A brief introduction to Mohamed AIT OUAARAB.
-- **Resume**: A summary of his education and work experience.
-- **Skills**: A list of his technical skills.
-- **Portfolio**: A gallery of his projects (currently disabled).
+- **About Me**: A brief introduction to Me.
+- **Resume**: A summary of my education and work experience.
+- **Skills**: A list of my technical skills.
+- **Portfolio**: A gallery of my projects (currently disabled).
 - **Contact**: A contact form with a Google reCAPTCHA.
 
 ## File Structure
