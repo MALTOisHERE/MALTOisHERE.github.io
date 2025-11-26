@@ -46,7 +46,6 @@
     <link rel="shortcut icon" href="./assets/images/favicon.ico"
       type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/notifications.css">
 
@@ -1291,14 +1290,11 @@
                 </div>
 
                 <div class="form-status">
-                  <div class="notification-content">
-                    <i class="icon"></i>
-                    <span class="message"></span>
-                  </div>
-                  <button class="form-status-close" type="button" aria-label="Close">
-                    <i class="fas fa-times"></i>
+                  <span class="status-message"></span>
+                  <button class="form-status-close" type="button"
+                    aria-label="Close">
+                    <ion-icon name="close"></ion-icon>
                   </button>
-                  <div class="progress-bar"></div>
                 </div>
 
                 <button class="form-btn" type="submit" disabled data-form-btn>
