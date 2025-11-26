@@ -1,12 +1,12 @@
 name: Purge Cloudflare Cache After Pages Deploy
 
 on:
-  push:
-    branches:
-      - main
+  deployment_status:
+    types: [success]
 
 jobs:
   purge_cache:
+    if: github.event.deployment_status.environment == 'github-pages'
     runs-on: ubuntu-latest
     steps:
       - name: Purge Cloudflare Cache ☁️
