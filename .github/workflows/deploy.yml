@@ -1,14 +1,20 @@
 name: Purge Cloudflare Cache After Pages Deploy
 
 on:
-  deployment_status:
-    types: [success]
+  push:
+    branches:
+      - main
+      # or your actual Pages branch
 
 jobs:
   purge_cache:
-    if: github.event.deployment_status.environment == 'github-pages'
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for GitHub Pages to deploy
+        run: |
+          echo "⏳ Waiting 80 seconds for GitHub Pages to finish deployment..."
+          sleep 80
+
       - name: Purge Cloudflare Cache ☁️
         run: |
           echo "Purging Cloudflare cache..."
