@@ -1,28 +1,37 @@
+# BLOCK access to sensitive files
+<FilesMatch "^(\.htaccess|\.htpasswd|\.env|\.ini|\.log|\.bak|\.swp|\.git|\.svn|composer\.json|package\.json|README\.md|wp-config\.php)$">
+    Require all denied
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Hide Apache version & OS info
+ServerSignature Off
+
 RewriteEngine On
 
-# Force HTTPS
+# Redirect all HTTP requests to HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-Options -Indexes
-
-ServerSignature Off
-
-RewriteRule \.(htaccess|htpasswd|ini|env|log|sh|bak|swp|git|svn)$ - [F,L,NC]
-RewriteRule ^(wp-config\.php|composer\.json|package\.json|README\.md)$ - [F,L,NC]
-
+# Block dangerous HTTP methods
 RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK) [NC]
 RewriteRule .* - [F,L]
 
+# Block malicious query strings
 RewriteCond %{QUERY_STRING} (eval\(|base64_decode|UNION\s+SELECT|javascript:|script\>|<\s*script) [NC]
 RewriteRule .* - [F,L]
 
-RewriteRule ^(xmlrpc\.php|wp-login\.php) - [F,L,NC]
+# Block access to core WordPress files (if WP installed)
+RewriteRule ^(xmlrpc\.php|wp-login\.php)$ - [F,L,NC]
 
+# Block bad bots / scanners
 RewriteCond %{HTTP_USER_AGENT} (Wappalyzer|BuiltWith|Nmap|Nikto|Qualys|w3af|sqlmap|Acunetix|Netsparker|Burp|dirbuster|OWASP|OpenVAS|Metasploit|hydra|nessus|wpscan) [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^(curl|httrack|libwww-perl|python-requests) [NC]
 RewriteRule .* - [F,L]
 
+# If file/folder does not exist, rewrite to .html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
