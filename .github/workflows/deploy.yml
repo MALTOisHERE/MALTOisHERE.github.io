@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages and Purge Cloudflare Cache
+name: Purge Cloudflare Cache After Pages Deploy
 
 on:
   push:
@@ -6,29 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
   purge_cache:
-    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Purge Cloudflare Cache ☁️
@@ -37,5 +15,5 @@ jobs:
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
           -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
           -H "Content-Type: application/json" \
-          --data '{"purge_everything":true}'
+          --data '{"purge_everything": true}'
           echo "✅ Cache purged"
