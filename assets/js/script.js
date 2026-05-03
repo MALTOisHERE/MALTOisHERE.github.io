@@ -88,14 +88,14 @@ for (let i = 0; i < selectItems.length; i++) {
   });
 }
 
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
 /**
  * Filters the portfolio items based on the selected category.
+ * Queries the DOM each call so dynamically added items are included.
  * @param {string} selectedValue - The selected category to filter by.
  */
 const filterFunc = function (selectedValue) {
+
+  const filterItems = document.querySelectorAll("[data-filter-item]");
 
   for (let i = 0; i < filterItems.length; i++) {
 
