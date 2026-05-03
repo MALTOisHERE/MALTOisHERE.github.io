@@ -49,7 +49,7 @@
           li.innerHTML =
             '<a href="' + repo.html_url + '" target="_blank" rel="noopener">' +
               '<figure class="project-img">' +
-                '<div class="project-item-icon-box"><i class="far fa-eye"></i></div>' +
+                '<div class="project-item-icon-box"><i class="ph ph-eye"></i></div>' +
                 '<img src="https://opengraph.githubassets.com/1/' + GITHUB_USER + '/' + repo.name + '"' +
                      ' alt="' + repo.name + '" loading="lazy">' +
               '</figure>' +

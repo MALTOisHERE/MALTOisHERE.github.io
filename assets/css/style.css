@@ -107,7 +107,7 @@ a { text-decoration: none; }
 
 li { list-style: none; }
 
-img, ion-icon, a, button, time, span { display: block; }
+img, a, button, time, span { display: block; }
 
 button {
   font: inherit;
@@ -180,7 +180,7 @@ article {
   z-index: -1;
 }
 
-.icon-box ion-icon { --ionicon-stroke-width: 35px; }
+.icon-box i { font-size: 16px; }
 
 article { display: none; }
 
@@ -646,7 +646,7 @@ main {
 .modal-close-btn:hover,
 .modal-close-btn:focus { opacity: 1; }
 
-.modal-close-btn ion-icon { --ionicon-stroke-width: 50px; }
+.modal-close-btn i { font-size: 18px; }
 
 .modal-avatar-box {
   background: var(--bg-gradient-onyx);
@@ -939,7 +939,7 @@ main {
   opacity: 1;
 }
 
-.project-item-icon-box ion-icon { --ionicon-stroke-width: 50px; }
+.project-item-icon-box i { font-size: 20px; }
 
 .project-img img {
   width: 100%;
@@ -1139,7 +1139,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   transition: var(--transition-1);
 }
 
-.form-btn ion-icon { font-size: 16px; }
+.form-btn i { font-size: 16px; }
 
 .form-btn:hover { background: var(--bg-gradient-yellow-1); }
 
@@ -1279,7 +1279,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: var(--fs-8);
   }
 
-  .info_more-btn ion-icon { display: none; }
+  .info_more-btn i { display: none; }
 
   .separator { margin: 32px 0; }
 
@@ -1450,7 +1450,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     padding: 16px 20px;
   }
 
-  .form-btn ion-icon { font-size: 18px; }
+  .form-btn i { font-size: 18px; }
 
 }
 
