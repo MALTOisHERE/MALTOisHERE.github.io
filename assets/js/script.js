@@ -183,14 +183,3 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const links = document.querySelectorAll('[data-nav-link]');
-  links.forEach(link => {
-    if (link.textContent.trim() === 'Blog') {
-      link.addEventListener('click', function (e) {
-        window.location.href = 'https://blog.malto.icu';
-        e.stopImmediatePropagation();
-      });
-    }
-  });
-});
