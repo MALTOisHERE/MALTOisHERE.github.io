@@ -28,6 +28,62 @@
     return cat === 'ai / ml' ? 'AI / ML' : cat.charAt(0).toUpperCase() + cat.slice(1);
   }
 
+  function buildCard(repo) {
+    var cat = categorize(repo);
+
+    var li = document.createElement('li');
+    li.className = 'project-item active';
+    li.setAttribute('data-filter-item', '');
+    li.setAttribute('data-category', cat);
+
+    var a = document.createElement('a');
+    a.href = repo.html_url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+
+    var figure = document.createElement('figure');
+    figure.className = 'project-img';
+
+    var iconBox = document.createElement('div');
+    iconBox.className = 'project-item-icon-box';
+    iconBox.innerHTML = '<i class="ph ph-eye"></i>';
+
+    var img = document.createElement('img');
+    img.alt = repo.name;
+
+    img.onerror = function () {
+      var el = this;
+      var attempts = (parseInt(el.dataset.attempts, 10) || 0) + 1;
+      el.dataset.attempts = attempts;
+      if (attempts <= 2) {
+        setTimeout(function () {
+          el.src = '';
+          el.src = 'https://opengraph.githubassets.com/1/' + GITHUB_USER + '/' + repo.name;
+        }, attempts * 1500);
+      }
+    };
+
+    img.src = 'https://opengraph.githubassets.com/1/' + GITHUB_USER + '/' + repo.name;
+
+    figure.appendChild(iconBox);
+    figure.appendChild(img);
+
+    var title = document.createElement('h3');
+    title.className = 'project-title';
+    title.textContent = formatName(repo.name);
+
+    var category = document.createElement('p');
+    category.className = 'project-category';
+    category.textContent = displayCat(cat);
+
+    a.appendChild(figure);
+    a.appendChild(title);
+    a.appendChild(category);
+    li.appendChild(a);
+
+    return li;
+  }
+
   fetch('https://api.github.com/users/' + GITHUB_USER + '/repos?per_page=100&sort=updated&type=public')
     .then(function (r) {
       if (!r.ok) throw new Error(r.status);
@@ -39,25 +95,7 @@
       repos
         .filter(function (r) { return !EXCLUDED.has(r.name); })
         .forEach(function (repo) {
-          var cat = categorize(repo);
-
-          var li = document.createElement('li');
-          li.className = 'project-item active';
-          li.setAttribute('data-filter-item', '');
-          li.setAttribute('data-category', cat);
-
-          li.innerHTML =
-            '<a href="' + repo.html_url + '" target="_blank" rel="noopener">' +
-              '<figure class="project-img">' +
-                '<div class="project-item-icon-box"><i class="ph ph-eye"></i></div>' +
-                '<img src="https://opengraph.githubassets.com/1/' + GITHUB_USER + '/' + repo.name + '"' +
-                     ' alt="' + repo.name + '" loading="lazy">' +
-              '</figure>' +
-              '<h3 class="project-title">' + formatName(repo.name) + '</h3>' +
-              '<p class="project-category">' + displayCat(cat) + '</p>' +
-            '</a>';
-
-          list.appendChild(li);
+          list.appendChild(buildCard(repo));
         });
     })
     .catch(function () {
